@@ -11,10 +11,10 @@ import store from './App/Redux/store';
 
 
 
-const RNRedux = () => {
+const RNRedux = () => (
   <Provider store={store}>
     <App />
   </Provider>
-}
+)
 
 export default AppRegistry.registerComponent(appName, () => RNRedux);

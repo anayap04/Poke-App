@@ -29,10 +29,6 @@ export class App extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-  const { todos } = state
-  return { todoList: todos.allIds }
-}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -40,4 +36,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)
