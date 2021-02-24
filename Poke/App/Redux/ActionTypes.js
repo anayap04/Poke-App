@@ -1,0 +1,3 @@
+export const REQUEST_POKEDEX = "REQUEST_POKEDEX";
+export const GET_POKEDEX = "GET_POKEDEX";
+export const ERROR_POKEDEX = "ERROR_POKEDEX";
