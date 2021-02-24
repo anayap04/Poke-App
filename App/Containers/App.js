@@ -35,7 +35,6 @@ export class App extends Component {
 
   render() {
     const {pokeData} = this.props;
-    console.log(pokeData);
     return( 
     <View>
     <Appbar style={styles.barStyle} />
@@ -45,7 +44,7 @@ export class App extends Component {
         value={this.state.pokemon}
         onChangeText={text => this.setText(text)}
       />
-      <Button mode="contained" onPress={() => this.callService(text)}>
+      <Button mode="contained" onPress={() => this.callService(this.state.pokemon)}>
         Buscar
       </Button>
       {pokeData ? <PokemonCard /> : null}
