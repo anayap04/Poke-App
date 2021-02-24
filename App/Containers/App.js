@@ -1,22 +1,13 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {connect} from 'react-redux';
+import {SafeAreaView,View} from 'react-native';
 import {Appbar} from 'react-native-paper';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+//Componentes
 import PokemonCard from './PokemonCard';
+
+//
+import {requestPokedex} from '../Redux/Actions';
 
 //Estilos
 import styles from './Styles/AppStyles';
@@ -38,5 +29,15 @@ export class App extends Component {
 
 }
 
+const mapStateToProps = (state) => {
+  const { todos } = state
+  return { todoList: todos.allIds }
+}
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    request: pokemon => requestPokedex(),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
