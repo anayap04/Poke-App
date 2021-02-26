@@ -85,7 +85,7 @@ export class App extends Component {
         : null;
 
     return( 
-    <View>
+    <View style={styles.container}>
     <Appbar style={styles.barStyle} />
     <SafeAreaView>
       <TextInput
@@ -104,6 +104,7 @@ export class App extends Component {
           pokemonName={pokemonInfo.pokemonName}
           pokemonText={pokemonInfo.pokemonText}
           pokemonType={pokemonInfo.pokemonType}
+          pokemonAbilities={pokemonInfo.pokemonAbilities}
         /> 
         : null}
     </SafeAreaView>

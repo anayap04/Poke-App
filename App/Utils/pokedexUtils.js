@@ -21,8 +21,12 @@ const mapInfo = (form, desc, type, abilities) => {
     pokemonName: name ? name.name : null,
     pokemonText: text ? text.flavor_text: null,
     pokemonType: typeP ? typeP.name : null,
-    pokemonAbilities: abilitiesList ? abilitiesList : null,
+    pokemonAbilities: abilitiesList ? abilitiesList.toString() : null,
   };
 }
 
-export {mapInfo}
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+} 
+
+export {mapInfo, removeAccents}
