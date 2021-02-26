@@ -11,3 +11,13 @@ export const ERROR_FORM = "ERROR_FORM";
 export const REQUEST_DESC = "REQUEST_DESC";
 export const GET_DESC = "GET_DESC";
 export const ERROR_DESC = "ERROR_DESC";
+
+//TYPE
+export const REQUEST_TYPE = "REQUEST_TYPE";
+export const GET_TYPE = "GET_TYPE";
+export const ERROR_TYPE = "ERROR_TYPE";
+
+//ABILITIES
+export const REQUEST_ABILITIES = "REQUEST_ABILITIES";
+export const GET_ABILITIES = "GET_ABILITIES";
+export const ERROR_ABILITIES = "ERROR_ABILITIES";

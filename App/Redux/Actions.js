@@ -8,6 +8,12 @@ import {
   REQUEST_DESC,
   GET_DESC,
   ERROR_DESC,
+  REQUEST_TYPE,
+  GET_TYPE,
+  ERROR_TYPE,
+  REQUEST_ABILITIES,
+  GET_ABILITIES,
+  ERROR_ABILITIES,
 } from "./ActionTypes"
 
 
@@ -70,6 +76,48 @@ export const getDesc = payload => {
 export const errorDesc = error => {
   return {
     type: ERROR_DESC,
+    error: error,
+  };
+};
+
+export const requestType = data => {
+  return {
+    type: REQUEST_TYPE,
+    actionPayload: data,
+  };
+};
+  
+export const getType = payload => {
+  return {
+    type: GET_TYPE,
+    payload: payload,
+  };
+};
+  
+export const errorType = error => {
+  return {
+    type: ERROR_TYPE,
+    error: error,
+  };
+};
+
+export const requestAbilities = data => {
+  return {
+    type: REQUEST_ABILITIES,
+    actionPayload: data,
+  };
+};
+  
+export const getAbilities = payload => {
+  return {
+    type: GET_ABILITIES,
+    payload: payload,
+  };
+};
+  
+export const errorAbilities = error => {
+  return {
+    type: ERROR_ABILITIES,
     error: error,
   };
 };
