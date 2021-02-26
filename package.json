@@ -8,11 +8,13 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "link": "react-native link"
+    "link": "react-native link",
+    "android:build" : "cd android && ./gradlew assembleDebug"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.9.3",
+    "enzyme": "^3.11.0",
     "react": "16.13.1",
     "react-dom": "^17.0.1",
     "react-native": "0.63.4",

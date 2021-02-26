@@ -5,7 +5,7 @@ Test App
 **Node Package Manager: 6.9.0**
 **NodeJS: 10.16.3**
 
-##Getting Started
+## Getting Started
 
 1. Clone the repo
 
@@ -17,6 +17,15 @@ git clone https://github.com/anayap04/Poke-App
 
 ```bash
 npm install
+```
+
+## Create App debug
+
+If you you want to generate your own apk, you just have to run the following command:
+
+
+```bash
+npm run android:build
 ```
 
 ## :speech_balloon: Development Tools
