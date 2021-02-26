@@ -13,7 +13,7 @@ const PokemonCard = props => {
       <Title>Card title</Title>
       <Paragraph>Card content</Paragraph>
     </Card.Content>
-    <Card.Cover source={{ uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png' }} />
+    <Card.Cover source={{ uri: photoUrl}} />
     <Card.Actions>
       <Button>Cancel</Button>
       <Button>Ok</Button>

@@ -7,10 +7,12 @@ import {Appbar, TextInput, Button} from 'react-native-paper';
 import PokemonCard from './PokemonCard';
 
 //Acciones
-import {requestPokedex} from '../Redux/Actions';
+import {requestForm, requestPokedex} from '../Redux/Actions';
 
 //Estilos
 import styles from './Styles/AppStyles';
+
+import {mapInfo} from '../Utils/pokedexUtils';
 
 /**
  * Container principal de la aplicación
@@ -24,6 +26,18 @@ export class App extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const {pokeData} = this.props;
+    if (prevProps.pokeData !== pokeData) {
+      this.getPokemonData(pokeData);
+    }
+  }
+  
+  getPokemonData = (data) => {
+    const {form} = this.props;
+    const url = data.forms ? data.forms[0].url : null;
+    form(url);
+  }
   callService = pokemon => {
     const {request} = this.props;
     request(pokemon);
@@ -34,7 +48,10 @@ export class App extends Component {
   }
 
   render() {
-    const {pokeData} = this.props;
+    const {formData} = this.props;
+    
+    const pokemonInfo = formData ? mapInfo(formData) : null;
+   
     return( 
     <View>
     <Appbar style={styles.barStyle} />
@@ -47,7 +64,7 @@ export class App extends Component {
       <Button mode="contained" onPress={() => this.callService(this.state.pokemon)}>
         Buscar
       </Button>
-      {pokeData ? <PokemonCard /> : null}
+      {pokemonInfo ? <PokemonCard photoUrl={pokemonInfo} /> : null}
     </SafeAreaView>
     </View>)
   }
@@ -55,13 +72,17 @@ export class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {pokedexData} = state
-  return {pokeData: pokedexData}
+  const {pokedexData, formData} = state
+  return {
+    pokeData: pokedexData,
+    formData: formData,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    request: pokemon => requestPokedex(),
+    request: pokemon => dispatch(requestPokedex(pokemon)),
+    form: url => dispatch(requestForm(url))
   }
 }
 
