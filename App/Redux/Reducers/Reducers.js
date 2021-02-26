@@ -48,6 +48,7 @@ export default function(state = initialState, action) {
         ...state,
         gettingData: false,
         pokedexData: action.pokedexData,
+        pokedexError: null,
       };
     }
     case ERROR_POKEDEX: {
@@ -55,7 +56,7 @@ export default function(state = initialState, action) {
         ...state,
         gettingData: true,
         pokedexData: null,
-        pokedexError: action.payload,
+        pokedexError: action.pokedexError,
       };
     }
     case REQUEST_FORM: {
@@ -78,7 +79,7 @@ export default function(state = initialState, action) {
         ...state,
         gettingFormData: true,
         formData: null,
-        formDataError: action.payload,
+        formDataError: action.formDataError,
       };
     }
     case REQUEST_DESC: {
@@ -101,7 +102,7 @@ export default function(state = initialState, action) {
         ...state,
         gettingDescData: true,
         descData: null,
-        descDataError: action.payload,
+        descDataError: action.descDataError,
       };
     }
     case REQUEST_TYPE: {
@@ -124,7 +125,7 @@ export default function(state = initialState, action) {
         ...state,
         gettingTypeData: true,
         typeData: null,
-        typeDataError: action.payload,
+        typeDataError: action.typeDataError,
       };
     }
     case REQUEST_ABILITIES: {
@@ -147,7 +148,7 @@ export default function(state = initialState, action) {
         ...state,
         gettingTypeData: true,
         abilitiesData: null,
-        abilitiesDataError: action.payload,
+        abilitiesDataError: action.abilitiesDataError,
       };
     }
     default:

@@ -15,13 +15,14 @@ import {
 export function* getPokedexData(payload) {
   
   const fetchUrl = `https://pokeapi.co/api/v2/pokemon/${payload.actionPayload}`;
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-    const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
-    const response = yield res.json();
+  const headers = {
+    'Content-Type': 'application/json',
+  };
 
-  if(response) {
+  const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
+  
+  if(res.ok) {
+    const response = yield res.json();
     yield put({
       type: GET_POKEDEX,
       pokedexData: response,
@@ -29,7 +30,7 @@ export function* getPokedexData(payload) {
   } else {
     yield put({
       type: ERROR_POKEDEX,
-      pokedexError: response.problem
+      pokedexError: 'Error ' + res.status,
     })
   }
 }
@@ -37,13 +38,14 @@ export function* getPokedexData(payload) {
 export function* getFormData(payload) {
   
   const fetchUrl = payload.actionPayload;
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-    const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
-    const response = yield res.json();
+  const headers = {
+    'Content-Type': 'application/json',
+  };
 
-  if(response) {
+  const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
+  
+  if(res.ok) {
+    const response = yield res.json();
     yield put({
       type: GET_FORM,
       formData: response,
@@ -51,7 +53,7 @@ export function* getFormData(payload) {
   } else {
     yield put({
       type: ERROR_FORM,
-      formDataError: response.problem
+      formDataError: 'Error ' + res.status,
     })
   }
 }
@@ -59,13 +61,14 @@ export function* getFormData(payload) {
 export function* getPokemonDesc(payload) {
   
   const fetchUrl = payload.actionPayload;
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-    const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
-    const response = yield res.json();
+  const headers = {
+    'Content-Type': 'application/json',
+  };
 
-  if(response) {
+  const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
+  
+  if(res.ok) {
+    const response = yield res.json();
     yield put({
       type: GET_DESC,
       descData: response,
@@ -73,7 +76,7 @@ export function* getPokemonDesc(payload) {
   } else {
     yield put({
       type: ERROR_DESC,
-      descDataError: response.problem
+      descDataError: 'Error ' + res.status,
     })
   }
 }
@@ -81,13 +84,13 @@ export function* getPokemonDesc(payload) {
 export function* getPokemonType(payload) {
   
   const fetchUrl = payload.actionPayload;
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-    const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+  const res = yield call(fetch, fetchUrl, { method: 'GET', headers });
+  
+  if(res.ok) {
     const response = yield res.json();
-
-  if(response) {
     yield put({
       type: GET_TYPE,
       typeData: response,
@@ -95,7 +98,7 @@ export function* getPokemonType(payload) {
   } else {
     yield put({
       type: ERROR_TYPE,
-      typeDataError: response.problem
+      typeDataError: 'Error ' + res.status,
     })
   }
 }
@@ -110,11 +113,11 @@ export function* getPokemonAbilities(payload) {
     return call( fetch, url, headers)
   }));
 
-  const response = yield all (res.map( r => {
-    return r.json();
-  }));
-  
-  if(response) {
+  if(res[0].ok) {
+    const response = yield all (res.map( r => {
+      return r.json();
+    }));
+
     yield put({
       type: GET_ABILITIES,
       abilitiesData: response,
@@ -122,7 +125,7 @@ export function* getPokemonAbilities(payload) {
   } else {
     yield put({
       type: ERROR_ABILITIES,
-      abilitiesDataError: response.problem
+      abilitiesDataError: 'Error',
     })
   }
 }

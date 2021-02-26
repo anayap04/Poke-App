@@ -43,12 +43,17 @@ const PokemonCard = props => {
     <View style={styles.cardContent}>
       <View style={styles.cardTitle}>
         <Title style={styles.title}>{pokemonName}</Title>
-        <Subheading style={[styles.subtitle]}>{pokemonType}</Subheading>
+        <View style={styles.subtitleContent}>
+          <Subheading style={[styles.subtitle]}>{pokemonType}</Subheading>
+        </View>
       </View>
-      <Image 
-        style={styles.imageStyle}
-        source={{uri: pokemonImage}}
-      />
+      <View style={styles.imageContent}>
+        <Image 
+          style={styles.imageStyle}
+          source={{uri: pokemonImage}}
+        />
+
+      </View>
       <View style={styles.chipContainer}>
         {renderMoreInfo()}
       </View>
