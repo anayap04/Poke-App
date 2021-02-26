@@ -15,12 +15,13 @@ const mapInfo = (form, desc, type, abilities) => {
       ? abilities.map(a => 
           a.names.filter(n => n.language.name === 'es')[0].name) 
       : null;
-  console.log(abilitiesList);
+  
   return {
     pokemonImage: image ? image: null,
     pokemonName: name ? name.name : null,
     pokemonText: text ? text.flavor_text: null,
     pokemonType: typeP ? typeP.name : null,
+    pokemonAbilities: abilitiesList ? abilitiesList : null,
   };
 }
 
