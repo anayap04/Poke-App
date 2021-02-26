@@ -1,6 +1,5 @@
 import 'react-native';
 import React from 'react';
-import shallow from 'enzyme';
 import {App, mapStateToProps, mapDispatchToProps} from '../App/Containers/App';
 
 // Note: test renderer must be required after react-native.
