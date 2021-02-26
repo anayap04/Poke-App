@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import {View, Image} from 'react-native';
 import {Chip, Title, Subheading, Text} from 'react-native-paper';
-import { removeAccents } from '../Utils/pokedexUtils';
+import {removeAccents} from '../Utils/pokedexUtils';
 
 //Styles
 import styleFn from './Styles/PokemonCardStyles';

@@ -158,7 +158,7 @@ export class App extends Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const {
     pokedexData,
     pokedexError,

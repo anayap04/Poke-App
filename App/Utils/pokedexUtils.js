@@ -1,17 +1,28 @@
 const mapInfo = (form, desc, type, abilities) => {
-  const image = form ? form.sprites.front_default : null;
+  const image = 
+    form && 
+    form.sprites && 
+    form.sprites.front_default
+      ? form.sprites.front_default 
+      : null;
   const name = 
-    desc ? desc.names.filter(n => n.language.name === 'es')[0] : null;
+    desc && 
+    desc.names 
+      ? desc.names.filter(n => n.language.name === 'es')[0] 
+      : null;
   const text = 
-    desc ? desc.flavor_text_entries
-      .filter(n => n.language.name === 'es')[0]
-    : null;
+      desc && 
+      desc.flavor_text_entries? desc.flavor_text_entries
+        .filter(n => n.language.name === 'es')[0]
+      : null;
   const typeP = 
-    type 
+    type &&
+    type.name
       ? type.names.filter(n => n.language.name === 'es')[0]
       : null;
   const abilitiesList = 
-    abilities 
+    abilities &&
+    abilities[0]
       ? abilities.map(a => 
           a.names.filter(n => n.language.name === 'es')[0].name) 
       : null;
@@ -25,8 +36,10 @@ const mapInfo = (form, desc, type, abilities) => {
   };
 }
 
-const removeAccents = (str) => {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const removeAccents = str => {
+  return str 
+    ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+    : null;
 } 
 
 export {mapInfo, removeAccents}
